@@ -1,5 +1,6 @@
 package controller;
 
+import application.Main;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -26,6 +27,7 @@ public class EditarAlunoController {
 
     private Aluno aluno;
     private Stage stage;
+    private Main main;
 
     @FXML
     void handleBtnCancelar(ActionEvent event) {
@@ -47,5 +49,9 @@ public class EditarAlunoController {
 
     public void setStage(Stage stageDialogo) {
         this.stage = stageDialogo;
+    }
+    
+     public void setMain(Main main) {
+        this.main = main;
     }
 }

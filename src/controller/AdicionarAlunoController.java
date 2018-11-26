@@ -1,15 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controller;
 
-import java.net.URL;
-import java.util.ResourceBundle;
+import application.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -31,19 +24,18 @@ public class AdicionarAlunoController {
 
     private Aluno aluno;
     private Stage stage;
-
+    private Main main;
+    
     @FXML
     void handleBtnCancelar(ActionEvent event) {
-        this.stage.close();
+      main.mostraTelaPrincipal();
     }
 
     @FXML
     void handleBtnOk(ActionEvent event) {
-
         aluno.setNome(campoTextoNome.getText());
         aluno.setSobreNome(campoTextoSobreNome.getText());
-
-        stage.close();
+        main.mostraTelaPrincipal();
     }
 
     public void setAluno(Aluno alunoSelecionado) {
@@ -52,5 +44,9 @@ public class AdicionarAlunoController {
 
     public void setStage(Stage stageDialogo) {
         this.stage = stageDialogo;
+    }
+    
+       public void setMain(Main main) {
+        this.main = main;
     }
 }
