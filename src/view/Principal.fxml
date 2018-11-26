@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="376.0" prefWidth="602.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PrincipalController">
+   <children>
+      <SplitPane dividerPositions="0.4397993311036789" layoutX="59.0" layoutY="120.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="374.0" prefWidth="299.0">
+               <children>
+                  <VBox layoutX="-1.0" layoutY="4.0" prefHeight="374.0" prefWidth="260.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="31.0" prefWidth="259.0" text="Alunos">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                           <padding>
+                              <Insets bottom="5.0" top="5.0" />
+                           </padding>
+                        </Label>
+                        <TableView fx:id="tabela" editable="true">
+                          <columns>
+                            <TableColumn fx:id="colunaNome" maxWidth="130.0" minWidth="115.0" onEditCommit="#handleCellNomeEditar" prefWidth="-1.0" text="Nome" />
+                            <TableColumn fx:id="colunaSobrenome" maxWidth="130.0" minWidth="115.0" prefWidth="-1.0" sortType="DESCENDING" text="Sobrenome" />
+                          </columns>
+                           <columnResizePolicy>
+                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                           </columnResizePolicy>
+                        </TableView>
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="412.0" prefWidth="375.0">
+               <children>
+                  <Label alignment="CENTER" layoutX="3.0" layoutY="6.0" prefHeight="18.0" prefWidth="331.0" text="Detalhes">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <GridPane layoutX="-3.0" layoutY="78.0" AnchorPane.bottomAnchor="90.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="78.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Label text="Nome" underline="true">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </Label>
+                        <Label text="Sobrenome" underline="true" GridPane.rowIndex="1">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </Label>
+                        <Label text="Email" underline="true" GridPane.rowIndex="2">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </Label>
+                        <Label text="Curso" underline="true" GridPane.rowIndex="3">
+                           <font>
+                              <Font name="System Bold" size="13.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="labelNome" GridPane.columnIndex="1" />
+                        <Label fx:id="labelSobrenome" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Label fx:id="labelEmail" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Label fx:id="labelCurso" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                     </children>
+                  </GridPane>
+                  <HBox alignment="CENTER" layoutX="68.0" layoutY="301.0" prefHeight="59.0" prefWidth="249.0" spacing="10.0">
+                     <children>
+                        <Button fx:id="btnAdicionar" alignment="CENTER" mnemonicParsing="false" onAction="#handleBtnAdicionar" text="Adicionar" />
+                        <Button fx:id="btnEditar" alignment="CENTER" mnemonicParsing="false" onAction="#handleBtnEditarAluno" text="Alterar" />
+                        <Button fx:id="btnDeletar" alignment="CENTER" mnemonicParsing="false" onAction="#handleBtnExcluirAluno" text="Deletar">
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </HBox>
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>
