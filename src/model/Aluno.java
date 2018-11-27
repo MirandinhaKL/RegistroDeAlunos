@@ -4,7 +4,8 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 public class Aluno {
-
+    
+    private int idAluno;
     private StringProperty nome;
     private StringProperty sobreNome;
     private StringProperty email;
@@ -20,6 +21,16 @@ public class Aluno {
     public Aluno() {
         this(null, null);
     }
+
+    public int getIdAluno() {
+        return idAluno;
+    }
+
+    public void setIdAluno(int idAluno) {
+        this.idAluno = idAluno;
+    }
+    
+    
 
     public StringProperty nomeProperty() {
         return nome;

@@ -31,14 +31,14 @@ public class EditarAlunoController {
 
     @FXML
     void handleBtnCancelar(ActionEvent event) {
-        this.stage.close();
+        main.mostraTelaPrincipal();
     }
 
     @FXML
     void handleBtnOk(ActionEvent event) {
         aluno.setNome(campoTextoNome.getText());
         aluno.setSobreNome(campoTextoSobreNome.getText());
-        stage.close();
+        main.mostraTelaPrincipal();
     }
 
     public void setAluno(Aluno alunoSelecionado) {
