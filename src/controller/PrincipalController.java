@@ -61,25 +61,6 @@ public class PrincipalController {
     @FXML
     private void initialize() {
 
-        //criando os dados para a tabela
-        alunos.add(new Aluno("Hans", "Muster"));
-        alunos.add(new Aluno("Ruth", "Mueller"));
-        alunos.add(new Aluno("Heinz", "Kurz"));
-        alunos.add(new Aluno("Cornelia", "Meier"));
-        alunos.add(new Aluno("Werner", "Meyer"));
-        alunos.add(new Aluno("Lydia", "Kunz"));
-        alunos.add(new Aluno("Anna", "Best"));
-        alunos.add(new Aluno("Stefan", "Meier"));
-        alunos.add(new Aluno("Martin", "Mueller"));
-        alunos.add(new Aluno("Martin", "Mueller"));
-        alunos.add(new Aluno("Layla", "Fancet"));
-        alunos.add(new Aluno("Brewer", "Spolton"));
-        alunos.add(new Aluno("Nancey", "De Francisci"));
-        alunos.add(new Aluno("Shalne", "Congdon"));
-        alunos.add(new Aluno("Rhianon", "Burr"));
-        alunos.add(new Aluno("Sara", "Gelsthorpe"));
-        alunos.add(new Aluno("Kennie", "MacLleese"));
-
         //		setando a lista alunos na tabela
         tabela.setItems(alunos);
 

@@ -63,4 +63,11 @@ public class Aluno {
     public String getCurso() {
         return curso.get();
     }
+    
+    public void exibeDadosDoAluno(){
+        System.out.println("=========== Dados do Aluno: ===========");
+        System.out.println("ID = " + getIdAluno());
+        System.out.println("Nome = " + getNome());
+        System.out.println("Sobrenome = " + getSobreNome());
+    }
 }
