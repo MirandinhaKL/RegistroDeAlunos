@@ -3,6 +3,7 @@ package application;
 import controller.AdicionarAlunoController;
 import controller.EditarAlunoController;
 import controller.PrincipalController;
+import controller.RemoveAlunoController;
 import controller.RootController;
 import java.io.IOException;
 import javafx.application.Application;
@@ -97,8 +98,7 @@ public class Main extends Application {
         }
     }
 
-      // Mostra tela original - a cena abre em outro stage.
-    
+    // Mostra tela original - a cena abre em outro stage.
 //    public void mostraTelaEditarAluno(Aluno alunoSelecionado) {
 //        try {
 //            FXMLLoader loader = new FXMLLoader();
@@ -118,7 +118,6 @@ public class Main extends Application {
 //            e.getMessage();
 //        }
 //    }
-
     public void mostraTelaAdicionarAluno(Aluno alunoTemporario) {
         try {
             /*
@@ -143,6 +142,21 @@ public class Main extends Application {
         }
     }
 
+    public void mostraTelaRemoverAluno(Aluno alunoTemporario) {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(Main.class.getResource("/view/RemoveAluno.fxml"));
+            AnchorPane tela = (AnchorPane) loader.load();
+            root.setCenter(tela);
+            RemoveAlunoController controller = loader.getController();
+            controller.setMain(this);
+            controller.setAluno(alunoTemporario);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+              
+        }
+    }
+
     public void mostraAlert(AlertType tipoAlert, String titulo, String cabecalho, String mensagem) {
         Alert alert = new Alert(tipoAlert);
         alert.initOwner(this.getPrimaryStage());
@@ -159,8 +173,8 @@ public class Main extends Application {
     public Stage getPrimaryStage() {
         return this.primaryStage;
     }
-    
-    public PrincipalController getPrincipalController(){
+
+    public PrincipalController getPrincipalController() {
         return this.principalController;
     }
 }

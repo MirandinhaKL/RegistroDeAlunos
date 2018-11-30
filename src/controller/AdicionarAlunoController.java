@@ -7,6 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import model.Aluno;
+import model.DAO.AlunoDAO;
 
 public class AdicionarAlunoController {
 
@@ -33,8 +34,10 @@ public class AdicionarAlunoController {
 
     @FXML
     void handleBtnOk(ActionEvent event) {
+        AlunoDAO  alunoDao = new AlunoDAO();
         aluno.setNome(campoTextoNome.getText());
         aluno.setSobreNome(campoTextoSobreNome.getText());
+        alunoDao.adicionaAluno(aluno);
         main.mostraTelaPrincipal();
     }
 

@@ -7,6 +7,7 @@ package controller;
 
 import application.Main;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -21,6 +22,7 @@ import javafx.scene.control.TableColumn.CellEditEvent;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.TextFieldTableCell;
 import model.Aluno;
+import model.DAO.AlunoDAO;
 
 public class PrincipalController {
 
@@ -55,36 +57,40 @@ public class PrincipalController {
     private Button btnDeletar;
 
     private ObservableList<Aluno> alunos = FXCollections.observableArrayList();
-
     private Main main;
+    private AlunoDAO alunoDAO;
 
     @FXML
     private void initialize() {
 
-        //		setando a lista alunos na tabela
+        carregaAlunosDoBanco();
         tabela.setItems(alunos);
-
-        // Inicializa a tabela de pessoas com duas colunas.
         colunaNome.setCellValueFactory(cellData -> cellData.getValue().nomeProperty());
         colunaNome.setCellFactory(TextFieldTableCell.forTableColumn());
-
         colunaSobrenome.setCellValueFactory(cellData -> cellData.getValue().sobreNomeProperty());
         colunaSobrenome.setCellFactory(TextFieldTableCell.forTableColumn());
-
-        // Detecta mudanÃ§as de seleÃ§Ã£o e mostra os detalhes da pessoa quando houver mudanÃ§a.
         tabela.getSelectionModel().selectedItemProperty().addListener(
                 (observable, oldValue, newValue) -> mostraDetalhes(newValue));
-
     }
 
     private void mostraDetalhes(Aluno newValue) {
-
         labelNome.setText(newValue.getNome());
         //		labelNome.setTextFill(Color.RED);
         labelSobrenome.setText(newValue.getSobreNome());
         labelEmail.setText(newValue.getEmail());
         labelCurso.setText(newValue.getCurso());
+    }
 
+    private void carregaAlunosDoBanco() {
+        alunoDAO = new AlunoDAO();
+        List<Aluno> listaDeAlunos = alunoDAO.retornaTodosOsAlunos();
+        for (int i = 0; i < listaDeAlunos.size(); i++) {
+            Aluno alunoTemporario = new Aluno();
+            alunoTemporario.setNome(listaDeAlunos.get(i).getNome());
+            alunoTemporario.setSobreNome(listaDeAlunos.get(i).getSobreNome());
+            alunoTemporario.setIdAluno(listaDeAlunos.get(i).getIdAluno());
+            alunos.add(alunoTemporario);
+        }
     }
 
     @FXML
@@ -98,7 +104,7 @@ public class PrincipalController {
     void handleBtnEditarAluno(ActionEvent event) {
         Aluno alunoSelecionado = tabela.getSelectionModel().getSelectedItem();
         if (alunoSelecionado == null) {
-            String titulo = "Sem SeleÃ§Ã£o";
+            String titulo = "Sem Seleção";
             String cabecalho = "Nenhum aluno selecionado.";
             String mensagem = "Por favor, selecione um aluno";
             main.mostraAlert(AlertType.WARNING, titulo, cabecalho, mensagem);
@@ -109,17 +115,14 @@ public class PrincipalController {
 
     @FXML
     void handleBtnExcluirAluno(ActionEvent event) {
-
-        int item = tabela.getSelectionModel().getSelectedIndex();
-
-        if (item >= 0) {
-            tabela.getItems().remove(item);
-        } else {
-            String titulo = "Sem SeleÃ§Ã£o";
+       Aluno alunoSelecionado = tabela.getSelectionModel().getSelectedItem();
+        if (alunoSelecionado == null) {
+            String titulo = "Sem Seleção";
             String cabecalho = "Nenhum aluno selecionado.";
             String mensagem = "Por favor, selecione um aluno";
-
             main.mostraAlert(AlertType.WARNING, titulo, cabecalho, mensagem);
+        } else {
+            main.mostraTelaRemoverAluno(alunoSelecionado);
         }
     }
 
